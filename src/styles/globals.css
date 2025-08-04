@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primaryColor: #A93E41;
+  --primaryColorHover: rgb(169, 62, 65, 50);
+  --font-medinna: 'Medinna Sans'
 }
 
 @theme inline {
@@ -14,13 +17,69 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: white;
+    --foreground: black;
   }
+}
+
+.text-primaryColor {
+  color: var(--primaryColor) !important
+}
+
+.bg-primaryColor {
+  background: var(--primaryColor) !important
+}
+
+.primaryColorHover {
+  background: var(--primaryColorHover);
+}
+
+.font-consolas {
+  font-family: Consolas !important;
+}
+
+@font-face {
+  font-family: 'Medinna Sans';
+  src: url('/fonts/MedinnaSans/MessinaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Medinna Sans';
+  src: url('/fonts/MedinnaSans/MessinaSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Medinna Sans';
+  src: url('/fonts/MedinnaSans/MessinaSans-RegularItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Medinna Sans';
+  src: url('/fonts/MedinnaSans/MessinaSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-medinna), Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 1400px) {
+  .screenFrame {
+    --screenContentWidth: 1400px;
+    padding-left: calc((110vw - var(--screenContentWidth)) / 2);
+    padding-right: calc((110vw - var(--screenContentWidth)) / 2);
+  }
 }
