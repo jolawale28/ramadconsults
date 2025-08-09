@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 export default function Header() {
 
   const pathname = usePathname()
-  console.log(pathname.includes('about'));
 
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
@@ -114,11 +113,11 @@ export default function Header() {
                 <div className="flex flex-col justify-between grow">
                   <div>
                     <div className="text-[#404040]">
-                      <div className="font-bold text-base py-5 px-4 border-[#EAECF0] border-b"><Link href="/" className="text-[#A93E41]">Home</Link></div>
-                      <div className="border-[#EAECF0] border-b px-4 py-5"><Link href="/about" className="hover:text-[#A93E41]">About</Link></div>
-                      <div className="border-[#EAECF0] border-b px-4 py-5"><Link href="/services" className="hover:text-[#A93E41]">Services</Link></div>
-                      <div className="border-[#EAECF0] border-b px-4 py-5"><Link href="/contact" className="hover:text-[#A93E41]">Contact</Link></div>
-                      <div className="border-[#EAECF0] border-b px-4 py-5"><Link href="/projects" className="hover:text-[#A93E41]">Projects</Link></div>
+                      <div className={`text-base py-5 px-4 border-[#EAECF0] border-b`}><Link href="/" className={`${pathname === '/' && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>Home</Link></div>
+                      <div className={`border-[#EAECF0] border-b px-4 py-5`}><Link href="/about" className={`${pathname.includes('about') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>About</Link></div>
+                      <div className={`border-[#EAECF0] border-b px-4 py-5`}><Link href="/services" className={`${pathname.includes('services') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>Services</Link></div>
+                      <div className={`border-[#EAECF0] border-b px-4 py-5`}><Link href="/contact" className={`${pathname.includes('contact') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>Contact</Link></div>
+                      <div className={`border-[#EAECF0] border-b px-4 py-5`}><Link href="/projects" className={`${pathname.includes('projects')&& 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>Projects</Link></div>
                     </div>
 
                     <div className="px-4 py-5 space-y-2">

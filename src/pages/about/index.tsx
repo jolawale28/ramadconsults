@@ -3,10 +3,8 @@ import Head from "next/head";
 import Header from "@/components/layouts/Header";
 import Link from "next/link";
 import Image from "next/image";
-import { CircleChevronLeft, CircleChevronRight, MapPinCheckInsideIcon } from "lucide-react";
-import SectionProjectsDelivered from "@/components/homepage/SectionProjectsDelivered";
-import ProjectsViewGallery from "@/components/homepage/ProjectsViewGallery";
-import { AgreementShakeIcon, BuildingIcon, CheckMarkIcon, FacebookIcon, HandShakeIcon, HumanBrainIcon, InstagramIcon, LinkedIn, TimeManagementIcon, UserGroupIcon, UserHeartIcon, WorldGlobeIcon } from "@/Icons";
+import { CheckMarkIcon, HandShakeIcon, HumanBrainIcon, TimeManagementIcon, UserHeartIcon } from "@/Icons";
+import Footer from "@/components/layouts/Footer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -63,7 +61,7 @@ export default function About() {
       <section className="screenFrame lg:px-[50px] px-[12px] text-center flex flex-col gap-y-8 justify-center items-center py-14">
         <div className="bg-[#F2F2F2] w-fit h-fit rounded-full flex flex-wrap gap-x-2 justify-between items-center md:text-sm text-[10px]">
           <div className="bg-[#000000] text-white w-fit py-0.5 px-[8px] md:py-1.5 md:px-[10px] rounded-full font-semibold">About</div>
-          <div className="me-3 text-wrap"><Link href="/brochure" className="underline hidden md:inline-block">click here to see our brochure</Link> </div>
+          <div className="me-3 text-wrap"><Link href="/brochure" className="underline md:inline-block">click here to see our brochure</Link> </div>
         </div>
         <h1 className="md:text-[54px] text-[42px] leading-[100%] tracking-[-4%] lg:w-[871px] w-full">
           <span className="font-semibold ">Engineering</span> <span className="italic text-[#A93E41]">Excellence</span>
@@ -102,14 +100,14 @@ export default function About() {
           <div className="flex justify-center">
             <div className="w-fit border border-[#A93E41] text-xs font-semibold px-4 py-1.5 rounded-full text-[#A93E41]">Our Numbers</div>
           </div>
-          <div className="flex justify-center border-y border-gray-100 pb-5 w-[800px] mx-auto mt-5">
+          <div className="flex justify-center border-y border-gray-100 pb-5 pt-5 w-full lg:w-[800px] mx-auto mt-5">
             <div className="text-center basis-1/2 grow-0 shrink-0">
-              <div className="font-bold text-[54px] font-consolas">200+</div>
+              <div className="font-bold text-3xl lg:text-[54px] font-consolas">200+</div>
               <div className="text-[16px] font-normal text-[#404040]">Projects</div>
             </div>
 
             <div className="text-center basis-1/2 grow-0 shrink-0">
-              <div className="font-bold text-[54px] font-consolas">647+</div>
+              <div className="font-bold text-3xl lg:text-[54px] font-consolas">647+</div>
               <div className="text-[16px] font-normal text-[#404040]">Design Plans</div>
             </div>
           </div>
@@ -121,28 +119,13 @@ export default function About() {
         <div className="text-[40px] text-center">
           Our Core <span className="text-[#A93E41] italic">Values</span>
         </div>
-        <div className="text-center text-[#404040]/70 leading-[25px] text-[18px] font-[350] w-[498px] mx-auto">
+        <div className="text-center text-[#404040]/70 leading-[25px] text-[18px] font-[350] w-full md:w-[498px] mx-auto">
           These values guide every decision we make, ensuring every project succeeds with integrity and excellence.
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,_350px)] gap-5 justify-center mt-16">
+        <div className="grid grid-cols-[repeat(auto-fit,_350px)] gap-5 justify-center justify-items-center mt-16">
           {
-            coreValues.slice(0, 3).map(ele => (
-              <div className="border border-gray-200 p-5 rounded-md space-y-2">
-                <div>
-                  {ele.icon}
-                </div>
-                <div className="font-semibold text-[24px]">{ele.title}</div>
-                <div className="font-normal text-sm leading-[20px] text-[#404040]">
-                  {ele.content}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-        <div className="grid grid-cols-[repeat(auto-fit,_350px)] gap-5 justify-center mt-5">
-          {
-            coreValues.slice(3).map(ele => (
-              <div className="border border-gray-200 p-5 rounded-md space-y-2">
+            coreValues.map(ele => (
+              <div key = {`sersgfh_${ele.title.replaceAll(' ', '')}`} className="border border-gray-200 p-5 rounded-md space-y-2">
                 <div>
                   {ele.icon}
                 </div>
@@ -175,40 +158,7 @@ export default function About() {
         </div>
       </section>
 
-      <footer className="screenFrame lg:px-[50px] px-[12px] pb-28 pt-10 border-t border-gray-200/70">
-        <div className="grid md:grid-cols-3 grid-cols-1 md:gap-5 lg:gap-10">
-          <div className="order-3 md:order-1">
-            <div className="relative w-[150px] h-[50px]">
-              <Image src="/images/logo.png" fill objectFit="contain" alt="logo_footer" />
-            </div>
-            <div className="text-sm text-gray-500 mt-5">
-              RAMAD CONSULTS is a full service construction company offering engineering solutions from start to finish. We have been operating as leading experts for years providing excellent workmanship and quality delivery.
-            </div>
-            <div className="mt-5 flex gap-x-2">
-              <Link href="" className=""><FacebookIcon /></Link>
-              <Link href="" className=""><InstagramIcon /></Link>
-              <Link href="" className=""><LinkedIn /></Link>
-            </div>
-          </div>
-          <div className="lg:order-2 order-1">
-            <h3 className="text-xl text-gray-700 mt-5">Office Address</h3>
-            <div className="mt-5 text-sm text-gray-500">
-              <strong>Abuja Office:</strong> Suite 213, Elyon Plaza, 182 1st Avenue, Gwarinpa 900108, FCT Abuja, Nigeria. Lagos Office: Block 2A, Road 32, Empire Court, Ikota Villa Estate, Lekki, Lagos, Nigeria.
-            </div>
-            <div className="mt-5 text-sm text-gray-500"><strong>Lagos Office:</strong> Block 2A, Road 32, Empire Court, Ikota Villa Estate, Lekki, Lagos, Nigeria.</div>
-          </div>
-          <div className="md:order-3 order-2">
-            <h3 className="text-xl text-gray-700 mt-5">Quick Links</h3>
-            <div className="flex flex-col gap-y-3 mt-5 text-gray-400 text-sm">
-              <Link href="/" className="hover:text-[#A93E41]">Home</Link>
-              <Link href="/" className="hover:text-[#A93E41]">About</Link>
-              <Link href="/" className="hover:text-[#A93E41]">Services</Link>
-              <Link href="/" className="hover:text-[#A93E41]">Projects</Link>
-              <Link href="/" className="hover:text-[#A93E41]">Contact</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
