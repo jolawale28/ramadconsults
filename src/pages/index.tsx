@@ -3,11 +3,6 @@ import Head from "next/head";
 import Header from "@/components/layouts/Header";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  CircleChevronLeft,
-  CircleChevronRight,
-  MapPinCheckInsideIcon,
-} from "lucide-react";
 import SectionProjectsDelivered from "@/components/homepage/SectionProjectsDelivered";
 import ProjectsViewGallery from "@/components/homepage/ProjectsViewGallery";
 import {
