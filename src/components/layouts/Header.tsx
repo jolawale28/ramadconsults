@@ -10,11 +10,15 @@ export default function Header() {
 
   const pathname = usePathname()
 
+  console.log(pathname)
+
   const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+  // return null
 
   return (
     <>
-      <header className='py-4 text-[#404040] shadow shadow-[#EAECF0]/35'>
+      <header className='py-4 text-[#404040] shadow shadow-[#EAECF0]/35 sticky top-0 left-0 z-1 bg-white'>
         <div className='flex items-center justify-between screenFrame lg:px-[50px] px-[12px] text-sm'>
           <div className='shrink-0'>
             <Image
@@ -31,22 +35,22 @@ export default function Header() {
                   Home
                 </Link>
               </li>
-              <li className={`${pathname.includes('about') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('about') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
                 <Link href='/about' className=''>
                   About
                 </Link>
               </li>
-              <li className={`${pathname.includes('services') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('services') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
                 <Link href='/services' className=''>
                   Services
                 </Link>
               </li>
-              <li className={`${pathname.includes('contact') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('contact') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
                 <Link href='/contact' className=''>
                   Contact
                 </Link>
               </li>
-              <li className={`${pathname.includes('projects') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('projects') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
                 <Link href='/projects' className=''>
                   Projects
                 </Link>

@@ -83,3 +83,9 @@ body {
     padding-right: calc((110vw - var(--screenContentWidth)) / 2);
   }
 }
+
+@layer components {
+  .hide-scrollbar {
+    @apply [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden;
+  }
+}
