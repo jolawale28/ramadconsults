@@ -75,7 +75,7 @@ export default function About() {
             About
           </div>
           <div className="me-3 text-wrap">
-            <Link href="/brochure" className="underline md:inline-block">
+            <Link href='/docs/RAMAD_BROCHURE.pdf' className="underline md:inline-block">
               click here to see our brochure
             </Link>{" "}
           </div>

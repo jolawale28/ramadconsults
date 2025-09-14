@@ -56,12 +56,19 @@ export default function Contact() {
               <BuildingIcon2 />
             </div>
             <div className="font-semibold text-xl">Office Addresses </div>
-            <div>
+            <div className = "space-y-2">
               <div>
                 <span className="font-bold">Abuja Office</span>
                 <span className="text-gray-500">
                   : Suite 213, Elyon Plaza, 182 1st Avenue, Gwarinpa 900108, FCT
                   Abuja, Nigeria.
+                </span>
+              </div>
+              <div>
+                <span className="font-bold">Lagos Office</span>
+                <span className="text-gray-500">
+                  : Block 2A, Road 32, Empire Court,
+                  Ikota Villa Estate, Lekki, Lagos, Nigeria.
                 </span>
               </div>
             </div>
@@ -73,7 +80,7 @@ export default function Contact() {
             </div>
             <div className="font-semibold text-xl">E-Mail </div>
             <div className="text-gray-500 break-words text-wrap">
-              <span className = "break-words text-wrap">info@ramadconsulting.com</span>
+              <span className="break-words text-wrap">info@ramadconsulting.com</span>
               <br />
               <span className="break-words text-wrap">rahman.shittu@ramadconsulting.com</span>
             </div>
@@ -83,11 +90,11 @@ export default function Contact() {
             <div>
               <TelephoneIcon />
             </div>
-            <div className="font-semibold text-xl">Mobile Number </div>
+            <div className="font-semibold text-xl">Mobile </div>
             <div className="text-gray-500">
               +2348036412958
-              <br />
-              +2348036412958
+              {/* <br />
+              +2348036412958 */}
             </div>
           </div>
         </div>

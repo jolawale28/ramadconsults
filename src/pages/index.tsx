@@ -46,7 +46,7 @@ export default function Home() {
           </div>
           <div className="me-3 text-wrap">
             Our newly revamped website 🥳{" "}
-            <Link href="/brochure" className="underline hidden md:inline-block">
+            <Link href='/docs/RAMAD_BROCHURE.pdf' className="underline hidden md:inline-block">
               click here to see our brochure
             </Link>{" "}
           </div>
@@ -62,7 +62,7 @@ export default function Home() {
           cutting-edge engineering design services across Nigeria and beyond.
         </div>
         <Link
-          href=""
+          href="/contact"
           className="bg-[#A93E41] hover:bg-[#8b3f41] text-white font-semibold px-3 py-2.5 md:text-sm text-xs rounded-xl text-nowrap"
         >
           Contact our team

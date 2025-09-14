@@ -20,37 +20,37 @@ export default function Header() {
     <>
       <header className='py-4 text-[#404040] shadow shadow-[#EAECF0]/35 sticky top-0 left-0 z-1 bg-white'>
         <div className='flex items-center justify-between screenFrame lg:px-[50px] px-[12px] text-sm'>
-          <div className='shrink-0'>
+          <Link href = "/" className='shrink-0'>
             <Image
               src={'/images/logo.png'}
               width={105}
               height={24}
               alt='Ramad logo'
             />
-          </div>
+          </Link>
           <div className='basis-[436px] shrink-0 grow-0 hidden lg:inline-block'>
             <ul className='flex justify-between'>
-              <li className={`${pathname === '/' && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname === '/' && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>
                 <Link href='/' className=''>
                   Home
                 </Link>
               </li>
-              <li className={`${pathname?.includes('about') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('about') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>
                 <Link href='/about' className=''>
                   About
                 </Link>
               </li>
-              <li className={`${pathname?.includes('services') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('services') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>
                 <Link href='/services' className=''>
                   Services
                 </Link>
               </li>
-              <li className={`${pathname?.includes('contact') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('contact') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>
                 <Link href='/contact' className=''>
                   Contact
                 </Link>
               </li>
-              <li className={`${pathname?.includes('projects') && 'text-primaryColor font-bold'} hover:text-primaryColor`}>
+              <li className={`${pathname?.includes('projects') && 'text-primaryColor font-bold'} hover:text-[#A93E41]`}>
                 <Link href='/projects' className=''>
                   Projects
                 </Link>
@@ -65,7 +65,7 @@ export default function Header() {
               View Projects
             </Link>
             <Link
-              href='/brochure'
+              href='/docs/RAMAD_BROCHURE.pdf'
               className='bg-[#A93E41] hover:bg-[#8b3f41] text-white font-semibold px-3 py-2.5 md:text-sm text-xs rounded-xl text-nowrap'
             >
               Download Brochure

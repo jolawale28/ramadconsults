@@ -37,8 +37,7 @@ export default function Footer () {
           <h3 className='text-xl text-gray-700 mt-5'>Office Address</h3>
           <div className='mt-5 text-sm text-gray-500'>
             <strong>Abuja Office:</strong> Suite 213, Elyon Plaza, 182 1st
-            Avenue, Gwarinpa 900108, FCT Abuja, Nigeria. Lagos Office: Block 2A,
-            Road 32, Empire Court, Ikota Villa Estate, Lekki, Lagos, Nigeria.
+            Avenue, Gwarinpa 900108, FCT Abuja, Nigeria.
           </div>
           <div className='mt-5 text-sm text-gray-500'>
             <strong>Lagos Office:</strong> Block 2A, Road 32, Empire Court,
