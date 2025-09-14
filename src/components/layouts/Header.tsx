@@ -10,11 +10,7 @@ export default function Header() {
 
   const pathname = usePathname()
 
-  console.log(pathname)
-
   const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-  // return null
 
   return (
     <>

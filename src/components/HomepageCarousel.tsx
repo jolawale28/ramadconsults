@@ -9,11 +9,48 @@ import { useEffect, useRef, useState } from "react";
 import { carouselData as slideData } from "@/data/Carousel";
 
 export default function HomepageCarousel() {
+
+  const nextButtonRef = useRef<HTMLButtonElement>(null)
+  const prevButtonRef = useRef<HTMLButtonElement>(null)
+
   const [carouselData] = useState<CarouselType[]>(slideData);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(activeIndexRef.current);
+
+  const [direction, setDirection] = useState<1 | -1>(1); // 1 = right, -1 = left
+  const scrollByItem = (dir: 1 | -1) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const itemWidth = container.firstElementChild?.clientWidth || 0;
+
+    container.scrollBy({
+      left: dir * itemWidth,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // Check if at the end (right) or start (left)
+      if (container.scrollLeft >= maxScroll) {
+        setDirection(-1); // reverse to left
+      } else if (container.scrollLeft <= 0) {
+        setDirection(1); // reverse to right
+      }
+
+      scrollByItem(direction);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [direction]);
 
   const handleScroll = () => {
     const container = containerRef.current;
@@ -26,22 +63,6 @@ export default function HomepageCarousel() {
     const index = Math.round(scrollLeft / slideWidth);
     activeIndexRef.current = index;
     setActiveIndex(index);
-  };
-
-  const scrollNext = () => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const itemWidth = container.firstElementChild?.clientWidth || 0;
-    container.scrollBy({ left: itemWidth, behavior: "smooth" });
-  };
-
-  const scrollPrev = () => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const itemWidth = container.firstElementChild?.clientWidth || 0;
-    container.scrollBy({ left: -itemWidth, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -98,10 +119,11 @@ export default function HomepageCarousel() {
         </div>
         <div className="flex gap-x-2 text-white">
           <button
+            ref={prevButtonRef}
             type="button"
             title="Slide left"
             className="cursor-pointer"
-            onClick={() => scrollPrev()}
+            onClick={() => scrollByItem(-1)}
           >
             <CircleChevronLeft
               size={40}
@@ -110,10 +132,11 @@ export default function HomepageCarousel() {
             />
           </button>
           <button
+            ref={nextButtonRef}
             type="button"
             title="Slide right"
             className="cursor-pointer"
-            onClick={() => scrollNext()}
+            onClick={() => scrollByItem(1)}
           >
             <CircleChevronRight
               size={40}

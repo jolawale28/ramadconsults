@@ -8,6 +8,8 @@ import {
 } from "@/Icons";
 import Footer from "@/components/layouts/Footer";
 import VisionHeroBanner from "@/components/VisionHeroBanner";
+import SEOMetadata from "@/components/SEOMetadata";
+import { usePathname } from "next/navigation";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -23,16 +25,21 @@ export default function Contact() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    console.log(e.target)
   }
+
+  const pathname = usePathname()
+
   return (
     <>
+      <SEOMetadata
+        title="Contact :: Ramad Consultants Ltd."
+        description="Ramad Engineering Consultants, best practitioners of architectural and engineering excellence."
+        keywords="Engineering, Consultants, Nigeria, Ramad, Architecture, Structural, Civil, Mechanical, Electrical, Plumbing, Design, Construction, Project Management, Projects Management, Building, Infrastructure, Sustainable, Innovative, Solutions"
+        url={process.env.NEXT_PUBLIC_SITE_URL + pathname}
+        image="https://ramadconsulting.com/assets/images/favicon.png"
+      />
       <Head>
-        <title>Contact :: Ramad Consultants Ltd.</title>
         <meta content="" name="description" />
-        <meta content="" name="keywords" />
-
         {/* <!-- Favicons --> */}
         <link href="/images/favicon.png" rel="icon" />
       </Head>
