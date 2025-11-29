@@ -102,12 +102,13 @@ export default function About() {
       </section>
 
       <section>
-        <div className="relative w-full lg:h-[574px] h-[380px] overflow-hidden screenFrame lg:px-[50px] px-[12px]">
+        <div className="relative w-full lg:h-[774px] h-[380px] overflow-hidden screenFrame lg:px-[50px] px-[12px]">
           <Image
-            src="/images/team_in_a_conference.jpg"
+            src="/images/team_picture_a.jpg"
             fill
             objectFit="cover"
-            alt="Hero banner 1"
+            objectPosition="top"
+            alt="team_picture_with_CEO"
           />
         </div>
       </section>
@@ -116,7 +117,7 @@ export default function About() {
         <div className="grid md:grid-cols-2 grid-col-3 gap-10">
           <div className="w-full md:h-full h-[250px] shrink-0 grow-0 basis-full relative rounded-[20px] overflow-hidden order-2">
             <Image
-              src="/images/md_supervising.jpg"
+              src="/images/personnel/personnel_B.jpg"
               fill
               objectFit="cover"
               alt="about image"
@@ -132,7 +133,7 @@ export default function About() {
               engineering needs.
             </div>
 
-            <div className="font-semibold text-[40px] mt-20">Our Vision</div>
+            <div className="font-semibold text-[40px] mt-20">Our Mission</div>
             <div className="text-[25px] leading-[40px] tracking-[-3%]">
               <span className="text-[#A93E41] italic font-light">
                 To deliver outstanding, efficient, and cost-effective
@@ -155,7 +156,7 @@ export default function About() {
           <div className="flex justify-center border-y border-gray-100 pb-5 pt-5 w-full lg:w-[800px] mx-auto mt-5">
             <div className="text-center basis-1/2 grow-0 shrink-0">
               <div className="font-bold text-3xl lg:text-[54px] font-consolas">
-                200+
+                33+
               </div>
               <div className="text-[16px] font-normal text-[#404040]">
                 Projects
@@ -164,10 +165,19 @@ export default function About() {
 
             <div className="text-center basis-1/2 grow-0 shrink-0">
               <div className="font-bold text-3xl lg:text-[54px] font-consolas">
-                647+
+                82+
               </div>
               <div className="text-[16px] font-normal text-[#404040]">
                 Design Plans
+              </div>
+            </div>
+
+            <div className="text-center basis-1/2 grow-0 shrink-0">
+              <div className="font-bold text-3xl lg:text-[54px] font-consolas">
+                5+
+              </div>
+              <div className="text-[16px] font-normal text-[#404040]">
+                Years in Excellence
               </div>
             </div>
           </div>

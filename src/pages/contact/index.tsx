@@ -67,8 +67,7 @@ export default function Contact() {
               <div>
                 <span className="font-bold">Abuja Office</span>
                 <span className="text-gray-500">
-                  : Suite 213, Elyon Plaza, 182 1st Avenue, Gwarinpa 900108, FCT
-                  Abuja, Nigeria.
+                  : No 29, Tai Solarin Street, Gwarimpa 5th Avenue, Abuja.
                 </span>
               </div>
               <div>
@@ -99,7 +98,7 @@ export default function Contact() {
             </div>
             <div className="font-semibold text-xl">Mobile </div>
             <div className="text-gray-500">
-              +2348036412958
+              +234 803 641 2958
               {/* <br />
               +2348036412958 */}
             </div>

@@ -30,7 +30,7 @@ import { usePathname } from "next/navigation";
 export default function Home() {
 
   const pathname = usePathname()
-  
+
   return (
     <>
       <SEOMetadata
@@ -85,7 +85,7 @@ export default function Home() {
       <section className="screenFrame lg:px-[50px] px-[12px] grid md:grid-cols-2 grid-col-3 gap-10 lg:py-28 py-8">
         <div className="w-full md:h-full h-[250px] shrink-0 grow-0 basis-full relative rounded-[20px] overflow-hidden">
           <Image
-            src="/images/about_section.jpg"
+            src="/images/project_grid_card3.jpg"
             fill
             objectFit="cover"
             alt="about image"
@@ -120,10 +120,10 @@ export default function Home() {
         <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-24 gap-8 lg:mb-24 mb-12">
           <div className="md:h-full h-[300px] shrink-0 rounded-lg overflow-hidden w-full relative">
             <Image
-              src="/images/clients_trust_1.jpg"
+              src="/images/asokoro_gate_house.jpg"
               fill
               objectFit="cover"
-              alt="clientsTrust"
+              alt="Asokoro Gate house"
             />
           </div>
           <div className="space-y-5">
@@ -135,7 +135,7 @@ export default function Home() {
               <BuildingIcon />
               <div>
                 <div className="font-semibold text-[22px] leading-[100%] tracking-[-3%] mb-2 mt-1">
-                  Ready for Complex Builds
+                  Equipped for High-Complexity Projects
                 </div>
                 <div className="text-gray-500 text-[16px] leading-[25px] tracking-[-0.5px]">
                   We design and manage structures, MEP systems, and
@@ -192,7 +192,7 @@ export default function Home() {
 
           <div className="h-full rounded-lg overflow-hidden w-full relative">
             <Image
-              src="/images/team_walking.jpg"
+              src="/images/personnel/personnel_A.jpg"
               fill
               objectFit="cover"
               alt="clientsTrust"

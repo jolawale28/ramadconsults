@@ -30,7 +30,7 @@ export default function ProjectsViewGallery() {
         </div>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 md:gap-10 gap-5">
-          {carouselData.slice(0, 9).filter(slide => selectedHandle === 'All' ? true: slide.location === selectedHandle).map((slide, idx) => (
+          {carouselData.filter(slide => selectedHandle === 'All' ? true: slide.location === selectedHandle).map((slide, idx) => (
             <Link
               href="/projects/123"
               className="border border-gray-200 rounded-lg overflow-hidden group"

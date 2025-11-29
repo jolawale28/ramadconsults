@@ -11,21 +11,21 @@ export default function SectionProjectsDelivered() {
 
   const projectCards: PropsType[] = [
     {
-      title: 'Integrated Structural & MEP Design',
-      desc: 'We combine structural engineering with mechanical, electrical, and plumbing systems for seamless coordination and efficient execution across all stages.',
-      image: '/images/project_grid_card.jpg',
+      title: 'Structural Steel Design',
+      desc: 'We deliver well-engineered and precisely detailed steel structures, ensuring strength, stability, and seamless coordination with other building systems for efficient and safe execution on site.',
+      image: '/images/personnel/engr_ramad.jpg',
+      dest: '/more'
+    },
+    {
+      title: 'Advanced Flat & PT Slab Engineering',
+      desc: 'Optimized flat slab systems that enhance structural efficiency, reduce material use, and support spacious, modern building designs.',
+      image: '/images/pt_slab.png',
       dest: '/more'
     },
     {
       title: 'Infrastructure Planning & Supervision',
       desc: 'From roads to utilities, we handle the design and oversight of critical infrastructure ensuring safety, compliance, and long-term durability.',
       image: '/images/project_grid_card2.jpg',
-      dest: '/more'
-    },
-    {
-      title: 'Efficient Project Management with BIM precision',
-      desc: 'We manage timelines, teams, and resources using advanced tools like Building Information Modelling (BIM) to reduce errors, save costs, and keep your project on track.',
-      image: '/images/project_grid_card3.jpg',
       dest: '/more'
     }
   ]
