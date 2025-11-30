@@ -16,7 +16,7 @@ export default function Footer() {
             />
           </div>
           <div className='text-sm text-gray-500 mt-5'>
-            RAMAD CONSULTS is a full service construction company offering
+            RAMAD CONSULTING is a full service construction company offering
             engineering solutions from start to finish. We have been operating
             as leading experts for years providing excellent workmanship and
             quality delivery.
@@ -73,10 +73,10 @@ export default function Footer() {
           <h3 className='text-xl text-gray-700 mt-5'>Working Hours</h3>
           <div className='flex flex-col gap-y-3 mt-5 text-gray-400 text-sm'>
             <div className='text-sm text-gray-500'>
-              <strong>Weekdays:</strong> 09:00 - 18:00
+              <strong>Weekdays:</strong> 8:00am - 6:00pm
             </div>
             <div className='text-sm text-gray-500'>
-              <strong>Weekend:</strong> 09:00 - 18:00
+              <strong>Weekend:</strong> 09:00am - 2:00pm
             </div>
           </div>
         </div>

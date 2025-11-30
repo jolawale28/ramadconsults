@@ -63,11 +63,11 @@ export default function Contact() {
               <BuildingIcon2 />
             </div>
             <div className="font-semibold text-xl">Office Addresses </div>
-            <div className = "space-y-2">
+            <div className="space-y-2">
               <div>
                 <span className="font-bold">Abuja Office</span>
                 <span className="text-gray-500">
-                  : No 29, Tai Solarin Street, Gwarimpa 5th Avenue, Abuja.
+                  : No 29, Tai Solarin Avenue, Gwarimpa, Abuja 900108 FCT
                 </span>
               </div>
               <div>
@@ -104,9 +104,24 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
       </section>
 
-      <section className="bg-[#FBFAF8] screenFrame lg:px-[50px] px-[12px] lg:py-28 py-8">
+      <section className="screenFrame lg:px-[50px] px-[12px]">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.4927939939735!2d7.408086799999998!3d9.109882800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e756376d110a3%3A0x582aa74e6bce415e!2s29%20Tai%20Solarin%20Ave%2C%20Gwarinpa%2C%20Abuja%20900108%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1764538569464!5m2!1sen!2sng"
+            width="100%"
+            height="550"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <section className="bg-[#FBFAF8] screenFrame lg:px-[50px] px-[12px] lg:py-28 py-8 hidden">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
           <div>
             <div className="lg:text-[40px] text-3xl mb-5 lg:mb-0 font-semibold">

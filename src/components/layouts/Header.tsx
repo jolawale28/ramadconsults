@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-      <header className='py-4 text-[#404040] shadow shadow-[#EAECF0]/35 sticky top-0 left-0 z-1 bg-white'>
+      <header className='py-4 text-[#404040] shadow shadow-[#EAECF0]/35 sticky top-0 left-0 z-10 bg-white'>
         <div className='flex items-center justify-between screenFrame lg:px-[50px] px-[12px] text-sm'>
           <Link href = "/" className='shrink-0'>
             <Image
