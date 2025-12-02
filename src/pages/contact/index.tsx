@@ -10,6 +10,8 @@ import Footer from "@/components/layouts/Footer";
 import VisionHeroBanner from "@/components/VisionHeroBanner";
 import SEOMetadata from "@/components/SEOMetadata";
 import { usePathname } from "next/navigation";
+import { useState, useTransition } from "react";
+import { Loader, Loader2 } from "lucide-react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -23,11 +25,43 @@ import { usePathname } from "next/navigation";
 
 export default function Contact() {
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  }
-
   const pathname = usePathname()
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
+
+  const [formSubmitTransition, startFormSubmitTransition] = useTransition()
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    startFormSubmitTransition(async () => {
+      try {
+        const res = await fetch(
+          "https://ramad-consulting-email-55sy8ef2k-jolawale28s-projects.vercel.app/api/send_email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              subject,
+              message
+            }),
+          }
+        );
+
+        const data = await res.json();
+        console.log("Response:", data);
+
+      } catch (err) {
+        console.error(err);
+      }
+    })
+  }
 
   return (
     <>
@@ -121,7 +155,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#FBFAF8] screenFrame lg:px-[50px] px-[12px] lg:py-28 py-8 hidden">
+      <section className="bg-[#FBFAF8] screenFrame lg:px-[50px] px-[12px] lg:py-28 py-8">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
           <div>
             <div className="lg:text-[40px] text-3xl mb-5 lg:mb-0 font-semibold">
@@ -147,6 +181,8 @@ export default function Contact() {
               <form className="space-y-6" onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="relative">
                   <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     id="name"
                     className="peer block w-full rounded-md border border-gray-200 bg-transparent px-3 pt-3.5 pb-2 text-sm text-gray-900 placeholder-transparent focus:border-[#A93E41] focus:ring-1 focus:ring-[#A93E41] focus:outline-none"
@@ -163,6 +199,8 @@ export default function Contact() {
 
                 <div className="relative">
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     id="email"
                     className="peer block w-full rounded-md border border-gray-200 bg-transparent px-3 pt-3.5 pb-2 text-sm text-gray-900 placeholder-transparent focus:border-[#A93E41] focus:ring-1 focus:ring-[#A93E41] focus:outline-none"
@@ -179,6 +217,8 @@ export default function Contact() {
 
                 <div className="relative">
                   <input
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     type="text"
                     id="subject"
                     className="peer block w-full rounded-md border border-gray-200 bg-transparent px-3 pt-3.5 pb-2 text-sm text-gray-900 placeholder-transparent focus:border-[#A93E41] focus:ring-1 focus:ring-[#A93E41] focus:outline-none"
@@ -200,6 +240,8 @@ export default function Contact() {
                     placeholder="Your message..."
                     rows={7}
                     required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   />
                   <label
                     htmlFor="message"
@@ -211,9 +253,13 @@ export default function Contact() {
 
                 <div className="flex justify-end text-sm">
                   <button
+                    disabled={formSubmitTransition}
                     type="submit"
-                    className="bg-[#A93E41] rounded px-4 py-2 text-white"
+                    className="disabled:opacity-40 relative bg-[#A93E41] overflow-hidden rounded px-4 py-2 text-white cursor-pointer"
                   >
+                    {formSubmitTransition && <div className="bg-[#A93E41] absolute inset-0">
+                      <div className="animate-spin h-full flex items-center justify-center"><Loader color="white" /></div>
+                    </div>}
                     Send Message
                   </button>
                 </div>
