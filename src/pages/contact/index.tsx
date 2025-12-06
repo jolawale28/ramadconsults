@@ -11,7 +11,7 @@ import VisionHeroBanner from "@/components/VisionHeroBanner";
 import SEOMetadata from "@/components/SEOMetadata";
 import { usePathname } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Loader, Loader2 } from "lucide-react";
+import { Loader } from "lucide-react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -32,30 +32,44 @@ export default function Contact() {
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
 
+  const [emailSent, setEmailSent] = useState(false)
+
   const [formSubmitTransition, startFormSubmitTransition] = useTransition()
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     startFormSubmitTransition(async () => {
       try {
-        const res = await fetch(
-          "https://ramad-consulting-email-55sy8ef2k-jolawale28s-projects.vercel.app/api/send_email",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              subject,
-              message
-            }),
-          }
+        const apiUrl = process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_API_EMAIL_DEV : process.env.NEXT_PUBLIC_API_EMAIL_PROD;
+
+        if (!apiUrl) {
+          throw new Error('API endpoint is not configured');
+        }
+
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message
+          }),
+        }
         );
 
         const data = await res.json();
         console.log("Response:", data);
+
+        if (data.success) {
+          setName('')
+          setEmail('')
+          setMessage('')
+          setSubject('')
+          setEmailSent(true)
+        }
 
       } catch (err) {
         console.error(err);
@@ -251,23 +265,31 @@ export default function Contact() {
                   </label>
                 </div>
 
-                <div className="flex justify-end text-sm">
-                  <button
-                    disabled={formSubmitTransition}
-                    type="submit"
-                    className="disabled:opacity-40 relative bg-[#A93E41] overflow-hidden rounded px-4 py-2 text-white cursor-pointer"
-                  >
-                    {formSubmitTransition && <div className="bg-[#A93E41] absolute inset-0">
-                      <div className="animate-spin h-full flex items-center justify-center"><Loader color="white" /></div>
-                    </div>}
-                    Send Message
-                  </button>
-                </div>
+                {
+                  emailSent ? (
+                    <div className="h-[40px] border-[1.5px] bg-[#A93E41]/5 border-[#A93E41] rounded text-[#A93E41] font-semibold select-none flex items-center justify-center">
+                      Message sent! 🎉
+                    </div>
+                  ) : (
+                    <div className="flex justify-end text-sm">
+                      <button
+                        disabled={formSubmitTransition}
+                        type="submit"
+                        className="disabled:opacity-40 relative bg-[#A93E41] overflow-hidden rounded px-4 py-2.5 text-white cursor-pointer"
+                      >
+                        {formSubmitTransition && <div className="bg-[#A93E41] absolute inset-0">
+                          <div className="animate-spin h-full flex items-center justify-center"><Loader size={18} color="white" /></div>
+                        </div>}
+                        Send Message
+                      </button>
+                    </div>
+                  )
+                }
               </form>
             </div>
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       <VisionHeroBanner />
 
