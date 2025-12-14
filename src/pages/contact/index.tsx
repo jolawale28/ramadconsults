@@ -12,6 +12,7 @@ import SEOMetadata from "@/components/SEOMetadata";
 import { usePathname } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Loader } from "lucide-react";
+import Script from "next/script";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -34,6 +35,29 @@ export default function Contact() {
 
   const [emailSent, setEmailSent] = useState(false)
 
+  const executeRecaptcha = (): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      // @ts-expect-error: grecaptcha is loaded from a global script, TypeScript doesn't know its type
+      if (!window.grecaptcha) {
+        return reject(new Error("reCAPTCHA not loaded"));
+      }
+
+      // @ts-expect-error: grecaptcha is loaded from a global script, TypeScript doesn't know its type
+      window.grecaptcha.ready(async () => {
+        try {
+          // @ts-expect-error: grecaptcha is loaded from a global script, TypeScript doesn't know its type
+          const token = await window.grecaptcha.execute(
+            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+            { action: "ramad_consulting_contact_form" }
+          );
+          resolve(token);
+        } catch (err) {
+          reject(err);
+        }
+      });
+    });
+  };
+
   const [formSubmitTransition, startFormSubmitTransition] = useTransition()
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,6 +70,8 @@ export default function Contact() {
           throw new Error('API endpoint is not configured');
         }
 
+        const recaptchaToken = await executeRecaptcha();
+
         const res = await fetch(apiUrl, {
           method: "POST",
           headers: {
@@ -55,7 +81,8 @@ export default function Contact() {
             name,
             email,
             subject,
-            message
+            message,
+            recaptchaToken
           }),
         }
         );
@@ -79,6 +106,10 @@ export default function Contact() {
 
   return (
     <>
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="afterInteractive"
+      />
       <SEOMetadata
         title="Contact :: Ramad Consultants Ltd."
         description="Ramad Engineering Consultants, best practitioners of architectural and engineering excellence."
