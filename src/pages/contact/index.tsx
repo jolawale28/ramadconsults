@@ -29,6 +29,7 @@ export default function Contact() {
   const pathname = usePathname()
 
   const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
@@ -79,6 +80,7 @@ export default function Contact() {
           },
           body: JSON.stringify({
             name,
+            phone,
             email,
             subject,
             message,
@@ -88,10 +90,10 @@ export default function Contact() {
         );
 
         const data = await res.json();
-        console.log("Response:", data);
 
         if (data.success) {
           setName('')
+          setPhone('')
           setEmail('')
           setMessage('')
           setSubject('')
@@ -236,9 +238,34 @@ export default function Contact() {
                   />
                   <label
                     htmlFor="name"
-                    className="absolute left-2 top-[15px] bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]"
+                    className={`absolute left-2 ${name === '' ? 'top-[15px]' : 'top-[-10px]'} bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]`}
                   >
                     Name
+                  </label>
+                </div>
+
+                <div className="relative">
+                  <input
+                    value={phone}
+                    onChange={(e) => {
+                      const numericValue = e.target.value.replace(/\D/g, '');
+                      setPhone(numericValue);
+                    }}
+                    onPaste={(e) => {
+                      const paste = e.clipboardData.getData('text');
+                      if (!/^\d*$/.test(paste)) e.preventDefault();
+                    }}
+                    type="text"
+                    id="mobile"
+                    className="peer block w-full rounded-md border border-gray-200 bg-transparent px-3 pt-3.5 pb-2 text-sm text-gray-900 placeholder-transparent focus:border-[#A93E41] focus:ring-1 focus:ring-[#A93E41] focus:outline-none"
+                    placeholder="Your mobile"
+                    required
+                  />
+                  <label
+                    htmlFor="mobile"
+                    className={`absolute left-2 ${phone === '' ? 'top-[15px]' : 'top-[-10px]'} bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]`}
+                  >
+                    Mobile
                   </label>
                 </div>
 
@@ -254,7 +281,7 @@ export default function Contact() {
                   />
                   <label
                     htmlFor="email"
-                    className="absolute left-2 top-[15px] bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]"
+                    className={`absolute left-2 ${email === '' ? 'top-[15px]' : 'top-[-10px]'} bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]`}
                   >
                     Email
                   </label>
@@ -272,7 +299,7 @@ export default function Contact() {
                   />
                   <label
                     htmlFor="subject"
-                    className="absolute left-2 top-[15px] bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]"
+                    className={`absolute left-2 ${subject === '' ? 'top-[15px]' : 'top-[-10px]'} bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]`}
                   >
                     Enquiry Subject
                   </label>
@@ -290,7 +317,7 @@ export default function Contact() {
                   />
                   <label
                     htmlFor="message"
-                    className="absolute left-2 top-[15px] bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]"
+                    className={`absolute left-2 ${message === '' ? 'top-[15px]' : 'top-[-10px]'} bg-[#FBFAF8] px-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-[10px] peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-[-10px] peer-focus:text-sm peer-focus:text-[#A93E41]`}
                   >
                     Message
                   </label>
